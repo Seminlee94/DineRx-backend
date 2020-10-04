@@ -7,9 +7,9 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :allergy
       t.string :department
       t.string :room
-      t.integer :diet
-      t.integer :hospital
-      t.integer :order
+      t.integer :diet_id
+      t.integer :hospital_id
+
 
       t.timestamps
     end
