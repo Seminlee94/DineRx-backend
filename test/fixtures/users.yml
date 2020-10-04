@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  password_digest: MyString
+  name: MyString
+  dob: MyString
+  allergy: MyString
+  department: MyString
+  room: MyString
+  diet: 1
+  hospital: 1
+  order: 1
+
+two:
+  password_digest: MyString
+  name: MyString
+  dob: MyString
+  allergy: MyString
+  department: MyString
+  room: MyString
+  diet: 1
+  hospital: 1
+  order: 1
