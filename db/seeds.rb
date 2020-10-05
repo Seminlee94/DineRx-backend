@@ -1,9 +1,12 @@
 # Seed file
+# Hospital.delete_all
+# Diet.delete_all
+# User.delete_all
+# Order.delete_all
 
-
-# Hospital.create(name:"LIJ", health_system: "Northwell", city: "Queens")
+# Hospital.create(name:"LIJ Northwell", health_system: "Northwell", city: "Queens")
 # Hospital.create(name:"NewYork-Presbyterian / Columbia University Medical Center", health_system: "NewYork-Presbyterian", city: "New York")
-# Hospital.create(name:"Peconic Bay", health_system: "Northwell", city: "Riverhead")
+# Hospital.create(name:"Peconic Bay Medical Center", health_system: "Northwell", city: "Riverhead")
 # Hospital.create(name:"NewYork-Presbyterian Lawrence Hospital", health_system: "NewYork-Presbyterian", city: "Bronxville")
 
 # Diet.create(name: "Regular", hospital_id: Hospital.all.sample.id)
