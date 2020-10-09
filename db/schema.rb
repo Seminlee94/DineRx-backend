@@ -10,13 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_165032) do
+ActiveRecord::Schema.define(version: 2020_10_09_040444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "diets", force: :cascade do |t|
+  create_table "allergies", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "food_ingredients", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "food_nutritions", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "category"
+    t.text "description"
+    t.boolean "regular", default: false
+    t.boolean "cardiac", default: false
+    t.boolean "low_sodium", default: false
+    t.boolean "liquid", default: false
+    t.boolean "low_iodine", default: false
+    t.boolean "pureed", default: false
+    t.boolean "diabetic", default: false
+    t.boolean "vegetarian", default: false
+    t.boolean "breakfast", default: false
+    t.boolean "lunch", default: false
+    t.boolean "dinner", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hospital_foods", force: :cascade do |t|
+    t.integer "food_id"
     t.integer "hospital_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -30,10 +66,30 @@ ActiveRecord::Schema.define(version: 2020_10_04_165032) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "nutritions", force: :cascade do |t|
+    t.string "title"
+    t.string "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_allergies", force: :cascade do |t|
     t.integer "user_id"
-    t.boolean "submitted", default: false
-    t.boolean "delivered", default: false
+    t.integer "allergy_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_foods", force: :cascade do |t|
+    t.integer "food_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,10 +98,10 @@ ActiveRecord::Schema.define(version: 2020_10_04_165032) do
     t.string "password_digest"
     t.string "name"
     t.string "dob"
-    t.string "allergy"
     t.string "department"
     t.string "room"
-    t.integer "diet_id"
+    t.string "diet"
+    t.text "restrictions"
     t.integer "hospital_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

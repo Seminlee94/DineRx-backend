@@ -4,10 +4,10 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :password_digest
       t.string :name
       t.string :dob
-      t.string :allergy
       t.string :department
       t.string :room
-      t.integer :diet_id
+      t.string :diet
+      t.text :restrictions, :default => nil
       t.integer :hospital_id
 
 
