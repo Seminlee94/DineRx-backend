@@ -16,7 +16,8 @@ class Food < ApplicationRecord
     has_many :food_nutritions
     has_many :nutritions, through: :food_nutritions
 
-    @@key = ENV["SPOON_API_KEY"]
+    # @@key = ENV["SPOON_API_KEY"]
+    @@key = ENV["SPOON_API"]
 
     def self.recipe_info(name)
         response = HTTParty.get("https://api.spoonacular.com/recipes/search?query=#{name}&apiKey=#{@@key}")
@@ -32,20 +33,45 @@ class Food < ApplicationRecord
         food = Food.find_or_create_by(id: id)
         food.name = result["title"]
         food.image = result["image"]
-        food.category = "dessert"
+        food.category = "pancake"
         food.description = result["summary"]
-        # food.regular = true
+        food.regular = true
         food.cardiac = true
         food.breakfast = true
-        food.lunch = true
-        food.dinner = true
+        # food.lunch = true
+        # food.dinner = true
         food.save
+
+        response_nutrition = HTTParty.get("https://api.spoonacular.com/recipes/#{id}/nutritionWidget.json?apiKey=#{@@key}")
+        result = JSON.parse(response_nutrition.body)
+        result_total = result["bad"] + result["good"]
+
+        result_total.map do |n|
+            nutrition = Nutrition.create(title: n["title"], amount: n["amount"] )
+            nutrition.save
+            food_nutrition = FoodNutrition.create(food_id: food.id, nutrition_id: nutrition.id)
+            food_nutrition.save
+        end
+                
+        
+        # food_nutrition = FoodNutrition.find_or_create_by(id: id)
+        # food_nutrition.food_id = nutrition.id
+        # food_nutrition.nutrition_id = nutrition.id
+        # food_nutrition.save
+
+        # response_ingredient = HTTParty.get("https://api.spoonacular.com/recipes/#{id}/ingredientWidget.json?apiKey=#{@@key}")
+        # result = JSON.parse(response_ingredient.body)
+
+        # ingredient = Ingredient.find_or_create_by(id: id)
+        # ingredient.name = result
+        # ingredient.save
+
+        # binding.pry
 
 
     end
 
 
-    # Food.recipe_info(francaise)
 
 
 end

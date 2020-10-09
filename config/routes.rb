@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :food_nutritions
-  resources :nutritions
-  resources :food_ingredients
-  resources :ingredients
   namespace :api do
     namespace :v1 do
+      resources :food_nutritions
+      resources :nutritions
+      resources :food_ingredients
+      resources :ingredients
       resources :hospital_foods
       resources :foods
       resources :users

@@ -47,9 +47,8 @@
 #     UserAllergy.create(allergy_id: Allergy.all.sample.id, user_id: User.all.sample.id)
 # end
 
-# Food.recipe_info("francaise")
 
-# Food.food_info("245589") #pancake
+Food.food_info("245589") #pancake
 # Food.food_info("481679")
 # Food.food_info("677465")
 # Food.food_info("211364") #omelet
@@ -92,3 +91,8 @@
 # Food.food_info("480266") 
 # Food.food_info("575765") 
 # Food.food_info("489721") 
+
+
+# Nutrition
+# Nutrition.nutrition_info("481679")
+# FoodNutrition.create(food_id: 245589, nutrition_id: 245589)

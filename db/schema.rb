@@ -22,11 +22,15 @@ ActiveRecord::Schema.define(version: 2020_10_09_040444) do
   end
 
   create_table "food_ingredients", force: :cascade do |t|
+    t.integer "food_id"
+    t.integer "ingredient_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "food_nutritions", force: :cascade do |t|
+    t.integer "food_id"
+    t.integer "nutrition_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
