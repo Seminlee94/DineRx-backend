@@ -26,48 +26,46 @@ class Food < ApplicationRecord
     end
 
     def self.food_info(id)
-        response = HTTParty.get("https://api.spoonacular.com/recipes/#{id}/information?includeNutrition=true&apiKey=#{@@key}")
-        result = JSON.parse(response.body)
-        # binding.pry
+        # response = HTTParty.get("https://api.spoonacular.com/recipes/#{id}/information?includeNutrition=true&apiKey=#{@@key}")
+        # result = JSON.parse(response.body)
+        # # binding.pry
 
-        food = Food.find_or_create_by(id: id)
-        food.name = result["title"]
-        food.image = result["image"]
-        food.category = "pancake"
-        food.description = result["summary"]
-        food.regular = true
-        food.cardiac = true
-        food.breakfast = true
+        # food = Food.find_or_create_by(id: id)
+        # food.name = result["title"]
+        # food.image = result["image"]
+        # food.category = "dessert"
+        # food.description = result["summary"]
+        # food.regular = true
+        # food.cardiac = true
+        # food.breakfast = true
         # food.lunch = true
         # food.dinner = true
-        food.save
+        # food.save
 
-        response_nutrition = HTTParty.get("https://api.spoonacular.com/recipes/#{id}/nutritionWidget.json?apiKey=#{@@key}")
-        result = JSON.parse(response_nutrition.body)
-        result_total = result["bad"] + result["good"]
+        # response_nutrition = HTTParty.get("https://api.spoonacular.com/recipes/#{id}/nutritionWidget.json?apiKey=#{@@key}")
+        # result = JSON.parse(response_nutrition.body)
+        # result_total = result["bad"] + result["good"]
 
-        result_total.map do |n|
-            nutrition = Nutrition.create(title: n["title"], amount: n["amount"] )
-            nutrition.save
-            food_nutrition = FoodNutrition.create(food_id: food.id, nutrition_id: nutrition.id)
-            food_nutrition.save
-        end
-                
-        
-        # food_nutrition = FoodNutrition.find_or_create_by(id: id)
-        # food_nutrition.food_id = nutrition.id
-        # food_nutrition.nutrition_id = nutrition.id
-        # food_nutrition.save
+        # result_total.map do |n|
+        #     nutrition = Nutrition.create(title: n["title"], amount: n["amount"] )
+        #     nutrition.save
+        #     food_nutrition = FoodNutrition.create(food_id: food.id, nutrition_id: nutrition.id)
+        #     food_nutrition.save
+        # end
 
-        # response_ingredient = HTTParty.get("https://api.spoonacular.com/recipes/#{id}/ingredientWidget.json?apiKey=#{@@key}")
-        # result = JSON.parse(response_ingredient.body)
-
-        # ingredient = Ingredient.find_or_create_by(id: id)
-        # ingredient.name = result
-        # ingredient.save
-
+        response_ingredient = HTTParty.get("https://api.spoonacular.com/recipes/#{id}/ingredientWidget.json?apiKey=#{@@key}")
+        result = JSON.parse(response_ingredient.body)
         # binding.pry
 
+        result["ingredients"].map do |n|
+            amount = (n["amount"]["metric"]["value"]).to_s + n["amount"]["metric"]["unit"]
+            ingredient = Ingredient.create(name: n["name"], image: n["image"], amount: amount)
+            ingredient.save
+            food_ingredient = FoodIngredient.create(food_id: id, ingredient_id: ingredient.id)
+            food_ingredient.save
+        # amount = "#{ingredient_row['amount']['us']['value']} #{ingredient_row['amount']['us']['unit']}"
+        # IngredientRecipe.create(recipe_id: recipe.id, ingredient_id: ingredient.id, amount: amount)
+        end
 
     end
 

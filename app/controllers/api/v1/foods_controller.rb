@@ -24,7 +24,7 @@ class Api::V1::FoodsController < ApplicationController
     def delete
         food = Food.find(params[:id])
 
-        render json: {}
+    render json: {}
     end
     
     private

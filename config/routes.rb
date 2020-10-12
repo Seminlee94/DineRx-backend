@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :foods
       resources :users
       resources :user_allergies
+      resources :user_foods
       resources :allergies
       resources :orders
       resources :hospitals

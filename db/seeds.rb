@@ -48,7 +48,7 @@
 # end
 
 
-Food.food_info("245589") #pancake
+# Food.food_info("245589") #pancake
 # Food.food_info("481679")
 # Food.food_info("677465")
 # Food.food_info("211364") #omelet
@@ -56,13 +56,13 @@ Food.food_info("245589") #pancake
 # Food.food_info("224648")
 # Food.food_info("224648") #egg
 # Food.food_info("465004")
-# Food.food_info("689961") #muffin
+# Food.food_info("689961") #bakery
 # Food.food_info("548574")
 # Food.food_info("482104")
 # Food.food_info("246700")
 # Food.food_info("245662")
 # Food.food_info("65432")
-# Food.food_info("273654") #bagel
+# Food.food_info("273654") 
 # Food.food_info("136507") #hot entree
 # Food.food_info("911369") 
 # Food.food_info("86418") 
@@ -96,3 +96,8 @@ Food.food_info("245589") #pancake
 # Nutrition
 # Nutrition.nutrition_info("481679")
 # FoodNutrition.create(food_id: 245589, nutrition_id: 245589)
+
+UserFood.create(user_id: 2, food_id: 245589)
+UserFood.create(user_id: 2, food_id: 997798)
+UserFood.create(user_id: 2, food_id: 723984)
+UserFood.create(user_id: 2, food_id: 224648)
