@@ -13,6 +13,7 @@ class Api::V1::UserFoodsController < ApplicationController
     end
 
     def create
+        # byebug
         user_food = UserFood.create(user_food_params)
         render json: UserFoodSerializer.new(user_food).to_serialized_json
         # render json: user_food, except: [:created_at, :updated_at]

@@ -2,9 +2,9 @@ class Api::V1::AuthController < ApplicationController
     # skip_before_action :authorized, only: [:create]
    
     def create
-      # @hospital = Hospital.find_by(name: params[:hospital])
-      # @user = User.find_by(name: params[:name], hospital: @hospital.id, dob: params[:dob])
-      @user = User.find_by(name: params[:name], dob: params[:dob])
+      @hospital = Hospital.find_by(name: params[:hospital])
+      @user = User.find_by(name: params[:name], hospital: @hospital.id, dob: params[:dob])
+      # @user = User.find_by(name: params[:name], dob: params[:dob])
       # @user = User.find_by(name: user_login_params[:name], dob: user_login_params[:dob])
       # @user = User.find_by(name: user_login_params[:name], hospital_id: @hospital.id, dob: user_login_params[:dob])
       if @user && @user.authenticate(params[:password])

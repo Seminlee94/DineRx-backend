@@ -97,7 +97,7 @@
 # Nutrition.nutrition_info("481679")
 # FoodNutrition.create(food_id: 245589, nutrition_id: 245589)
 
-UserFood.create(user_id: 2, food_id: 245589)
-UserFood.create(user_id: 2, food_id: 997798)
-UserFood.create(user_id: 2, food_id: 723984)
-UserFood.create(user_id: 2, food_id: 224648)
+# UserFood.create(user_id: 2, food_id: 245589)
+# UserFood.create(user_id: 2, food_id: 997798)
+# UserFood.create(user_id: 2, food_id: 723984)
+# UserFood.create(user_id: 2, food_id: 224648)
