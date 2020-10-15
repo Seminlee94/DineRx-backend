@@ -1,5 +1,5 @@
 class UserFoodSerializer < ActiveModel::Serializer
-  attributes :id, :food_id, :user_id
+  attributes :id, :food_id, :user_id, :meal_types, :meal_schedule
 
   def initialize(user_food_obj)
     @user_food_obj = user_food_obj

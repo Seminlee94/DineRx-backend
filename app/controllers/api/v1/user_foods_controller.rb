@@ -26,15 +26,16 @@ class Api::V1::UserFoodsController < ApplicationController
         # render json: user_food, except: [:created_at, :updated_at]
     end
 
-    def delete
+    def destroy
+        # byebug
         user_food = UserFood.find(params[:id])
-
+        user_food.destroy
         render json: {}
     end
     
     private
     
     def user_food_params
-        params.require(:user_food).permit(:food_id, :user_id )
+        params.require(:user_food).permit(:food_id, :user_id, :meal_types, :meal_schedule )
     end
 end
