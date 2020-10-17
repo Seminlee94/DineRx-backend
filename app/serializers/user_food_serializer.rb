@@ -9,7 +9,7 @@ class UserFoodSerializer < ActiveModel::Serializer
     @user_food_obj.to_json(
         :include => {
             :food => {
-              :except => [:created_at, :updated_at]
+              :include => [:ingredients, :nutritions]
             },
             :user => {
               :except => [:created_at, :updated_at]  

@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :dob, :department, :room, :diet, :hospital, :foods
+  attributes :id, :name, :dob, :department, :room, :diet, :hospital, :foods, :allergies, :restrictions
 
   # def initialize(user)
   #   @user = user
