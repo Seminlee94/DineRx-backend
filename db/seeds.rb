@@ -101,3 +101,7 @@
 # UserFood.create(user_id: 2, food_id: 997798)
 # UserFood.create(user_id: 2, food_id: 723984)
 # UserFood.create(user_id: 2, food_id: 224648)
+
+20.times do
+    UserIngredient.create(user_food_id: UserFood.first.id, ingredient_id: Ingredient.all.sample.id)
+end
