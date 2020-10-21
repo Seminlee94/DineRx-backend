@@ -15,7 +15,10 @@ class Api::V1::UserOrdersController < ApplicationController
 
     def create
         # byebug
-        user_order = UserOrder.create(user_order_params)
+        food_id = []
+        params[:food_id].each{|e| food_id << e}
+        # user_order = UserOrder.create(user_order_params)
+        user_order = UserOrder.create(user_id: params[:user_id], order_id: params[:order_id], time: params[:time], food_id: food_id)
         render json: UserOrderSerializer.new(user_order).to_serialized_json
         # render json: user_order, except: [:created_at, :updated_at]
     end
@@ -37,7 +40,7 @@ class Api::V1::UserOrdersController < ApplicationController
     private
     
     def user_order_params
-        params.require(:user_orders).permit(:user_id, :order_id, :time)
+        params.require(:user_order).permit(:user_id, :order_id, :time, :food_id)
     end
 
 end

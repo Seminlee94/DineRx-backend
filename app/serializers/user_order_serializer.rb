@@ -1,5 +1,5 @@
 class UserOrderSerializer < ActiveModel::Serializer
-  attributes :id, :order_id, :user_id, :time
+  attributes :id, :order_id, :user_id, :time, :food_id
 
   def initialize(user_order_obj)
     @user_order_obj = user_order_obj
