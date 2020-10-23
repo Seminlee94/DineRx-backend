@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      resources :user_orders
+      resources :user_ingredients
       resources :food_nutritions
       resources :nutritions
       resources :food_ingredients

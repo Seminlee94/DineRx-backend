@@ -8,10 +8,17 @@
 
 # Order
 
-# Order.create(user_id: User.all.sample.id, submitted: true, delivered: false)
-# Order.create(user_id: User.all.sample.id, submitted: true, delivered: true)
-# Order.create(user_id: User.all.sample.id, submitted: true, delivered: false)
-# Order.create(user_id: User.all.sample.id)
+# Order.create(meal_schedule: "order_ahead", meal_types: "breakfast")
+# Order.create(meal_schedule: "order_ahead", meal_types: "lunch")
+# Order.create(meal_schedule: "order_ahead", meal_types: "dinner")
+# Order.create(meal_schedule: "order_now", meal_types: "breakfast")
+# Order.create(meal_schedule: "order_now", meal_types: "lunch")
+# Order.create(meal_schedule: "order_now", meal_types: "dinner")
+
+# 20.times do
+#     UserOrder.create(user_id: User.all.sample.id, order_id: Order.all.sample.id)
+# end
+
 
 
 # Hospital.create(name:"LIJ Northwell", health_system: "Northwell", city: "Queens")
@@ -101,3 +108,7 @@
 # UserFood.create(user_id: 2, food_id: 997798)
 # UserFood.create(user_id: 2, food_id: 723984)
 # UserFood.create(user_id: 2, food_id: 224648)
+
+# 20.times do
+#     UserIngredient.create(user_food_id: UserFood.first.id, ingredient_id: Ingredient.all.sample.id)
+# end
